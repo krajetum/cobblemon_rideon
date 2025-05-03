@@ -1,10 +1,10 @@
 {
-  "name": "raikou",
+  "name": "raging_bolt",
   "offsets": {
     "DEFAULT": {
       "x": 0.0,
       "y": 0.0,
-      "z": -0.3
+      "z": 0.7
     }
   },
   "baseSpeedModifier": 1.0,
