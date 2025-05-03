@@ -50,6 +50,7 @@ jobs:
             avatarUrl: https://media.forgecdn.net/avatars/thumbnails/620/286/64/64/638008832892634916.png
             footer: Non mi chiedete nuove mount pls.
             severity: info
-            text: Una nuova versione del resource_pack rilasciata! 
+            text: Una nuova versione del resource_pack rilasciata!
+            description: Scaricate la versione aggiornata dal link (sbrigateve pure)
             details: https://github.com/krajetum/cobblemon_rideon/releases/tag/${{ steps.tag_version.outputs.new_tag }}
             webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
