@@ -24,11 +24,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: zip
         uses: montudor/action-zip@v1.0.0
         with: 
           args: zip -qq -r cobblemon_rideon_custom.zip data pack.mcmeta
-      - name: Release
-        uses: softprops/action-gh-release@v2
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
         with:
-          files: cobblemon_rideon_custom.zip
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
+          artifacts: cobblemon_rideon_custom_${{ steps.tag_version.outputs.new_tag }}.zip
+          bodyFile: cobblemon_rideon_custom_${{ steps.tag_version.outputs.new_tag }}.zip
