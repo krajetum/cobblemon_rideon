@@ -33,7 +33,7 @@ jobs:
       - name: zip
         uses: montudor/action-zip@v1.0.0
         with: 
-          args: zip -qq -r cobblemon_rideon_custom.zip data pack.mcmeta
+          args: zip -qq -r cobblemon_rideon_custom_${{ steps.tag_version.outputs.new_tag }}.zip data pack.mcmeta
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
