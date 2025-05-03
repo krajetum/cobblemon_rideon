@@ -42,3 +42,13 @@ jobs:
           body: ${{ steps.tag_version.outputs.changelog }}
           artifacts: cobblemon_rideon_custom_${{ steps.tag_version.outputs.new_tag }}.zip
           bodyFile: cobblemon_rideon_custom_${{ steps.tag_version.outputs.new_tag }}.zip
+      - name: Test Success
+        uses: rjstone/discord-webhook-notify@v1
+        if: success()
+        with:
+            username: krajetum_slave
+            avatar_url: https://media.forgecdn.net/avatars/thumbnails/620/286/64/64/638008832892634916.png
+            footer: Non mi chiedete nuove mount pls.
+            severity: info
+            text: Una nuova versione del resource_pack rilasciata! https://github.com/krajetum/cobblemon_rideon/releases/tag/${{ steps.tag_version.outputs.new_tag }}
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
